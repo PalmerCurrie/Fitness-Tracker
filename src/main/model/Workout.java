@@ -19,7 +19,7 @@ public class Workout {
         this.name = name;
         this.date = date;
         this.weight = weight;
-        exerciseList = null;
+        exerciseList = new ArrayList<Exercise>();
     }
 
     public String getName() {
@@ -35,7 +35,7 @@ public class Workout {
     }
 
     public void setDate(String date) {
-        this.name = date;
+        this.date = date;
     }
 
     public double getWeight() {
@@ -66,6 +66,9 @@ public class Workout {
     public void addExercise(Exercise exercise) {
         this.exerciseList.add(exercise);
     }
+
+    // TODO: view Exercises,
+    // for loop to display exercises, should be a method in the ui.
 
 }
 

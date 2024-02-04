@@ -8,6 +8,7 @@ public class FitnessTrackerApp {
     private ArrayList<Workout> workoutList;
 
     public FitnessTrackerApp() {
+        workoutList = new ArrayList<Workout>();
 
     }
 
