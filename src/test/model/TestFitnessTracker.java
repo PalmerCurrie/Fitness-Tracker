@@ -6,9 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestFitnessTrackerApp {
-    private FitnessTrackerApp ft1 = new FitnessTrackerApp();
-    private FitnessTrackerApp ft2 = new FitnessTrackerApp();
+public class TestFitnessTracker {
+    private FitnessTracker ft1 = new FitnessTracker();
+    private FitnessTracker ft2 = new FitnessTracker();
     private ArrayList<Workout> workoutList1 = new ArrayList<Workout>();
     private ArrayList<Workout> workoutList2 = new ArrayList<Workout>();
 

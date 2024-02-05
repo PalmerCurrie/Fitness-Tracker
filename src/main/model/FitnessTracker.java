@@ -3,11 +3,11 @@ package model;
 import java.util.ArrayList;
 
 
-public class FitnessTrackerApp {
+public class FitnessTracker {
 
     private ArrayList<Workout> workoutList;
 
-    public FitnessTrackerApp() {
+    public FitnessTracker() {
         workoutList = new ArrayList<Workout>();
 
     }
