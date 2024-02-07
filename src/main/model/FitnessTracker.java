@@ -35,4 +35,5 @@ public class FitnessTracker {
         this.workoutList.add(workout);
     }
 
+
 }

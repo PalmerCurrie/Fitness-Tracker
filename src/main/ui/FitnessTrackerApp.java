@@ -5,11 +5,15 @@ import model.FitnessTracker;
 import model.Workout;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 // Fitness Tracker application
 public class FitnessTrackerApp {
 
     private Scanner scan;
+    private FitnessTracker ft;
+    private Workout workout;
+    private Exercise exercise;
 
     // EFFECTS: runs the Fitness Tracker Application
     public FitnessTrackerApp() {
@@ -21,7 +25,8 @@ public class FitnessTrackerApp {
     public void initialize() {
         scan = new Scanner(System.in);
         scan.useDelimiter("\n");
-        FitnessTracker fitnessTracker;
+        ft = new FitnessTracker();
+
 
 
 
@@ -73,10 +78,10 @@ public class FitnessTrackerApp {
             // editWorkout()
             System.out.println("You have selected option: " + option);  //stub
         } else if (option == 3) {
-            // viewWorkouts()
+            // removeWorkout();
             System.out.println("You have selected option: " + option);  //stub
         } else if (option == 4) {
-            // removeWorkout();
+            viewWorkouts();
             System.out.println("You have selected option: " + option);  //stub
         } else if (option == 5) {
             // saveFitnessTracker()
@@ -96,7 +101,7 @@ public class FitnessTrackerApp {
             workoutMenu();
             workoutMenuOption = scan.nextInt();
             if (workoutMenuOption == 5) {
-                // saveApplication();
+                saveWorkout(workout);
                 System.out.println("Exiting Workout Menu entering FitnessMenu");
                 inWorkoutMenu = false;
             } else {
@@ -122,17 +127,13 @@ public class FitnessTrackerApp {
         if (option == 1) {
             createNewExercise();
         } else if (option == 2) {
-            // removeExercise()
+            removeExercise();
             System.out.println("You have selected option: " + option);  //stub
         } else if (option == 3) {
             // editExercise()
             System.out.println("You have selected option: " + option);  //stub
         } else if (option == 4) {
-            // viewExercises();
-            System.out.println("You have selected option: " + option);  //stub
-        } else if (option == 5) {
-            // saveWorkout()
-            System.out.println("You have selected option: " + option);  //stub
+            viewExercises();
         } else {
             System.out.println("That is not a valid option.");
             System.out.println("Please enter the number corresponding to the option you would like to select");
@@ -140,6 +141,37 @@ public class FitnessTrackerApp {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS:  adds workout to FitnessTracker workout list
+    public void saveWorkout(Workout workout) {
+        ft.addWorkout(workout);
+    }
+
+    // EFFECTS: Prints out Workout list by printing the name of each workout
+    public void viewWorkouts() {
+        System.out.println("printing Workouts");
+        if (ft.getListSize() == 0) {
+            System.out.println("There are no workouts saved.");
+        } else {
+            for (int i = 0; i < ft.getListSize(); i++) {
+                Workout currentWorkout = ft.getWorkoutList().get(i);
+                System.out.println(i + ") " + currentWorkout.getName() + " - " + currentWorkout.getDate());
+            }
+        }
+    }
+
+    // EFFECTS: Prints out Workout list by printing the name of each workout
+    public void viewExercises() {
+        System.out.println("printing Exercises for this workout");
+        if (workout.getListSize() == 0) {
+            System.out.println("There are no Exercises saved.");
+        } else {
+            for (int i = 0; i < workout.getListSize(); i++) {
+                Exercise currentExercise = workout.getExerciseList().get(i);
+                System.out.println(i + ") " + currentExercise.getName());
+            }
+        }
+    }
 
 
 
@@ -152,7 +184,7 @@ public class FitnessTrackerApp {
         String date = scan.next();
         System.out.println("Enter Your Current Weight:");
         double weight = scan.nextDouble();
-        Workout newWorkout = new Workout(name, date, weight);
+        workout = new Workout(name, date, weight);
 
     }
 
@@ -167,8 +199,19 @@ public class FitnessTrackerApp {
         int exerciseReps = scan.nextInt();
         System.out.println("Enter Exercise Weight:");
         int exerciseWeight = scan.nextInt();
-        Exercise newExercise = new Exercise(exerciseName, exerciseSets, exerciseReps, exerciseWeight);
-        // add newExercise to Workout
+        exercise = new Exercise(exerciseName, exerciseSets, exerciseReps, exerciseWeight);
+        workout.addExercise(exercise);
+    }
+
+    // MODIFIES: this
+    // EFFECTS:  removes exercise at given inputs from Workouts exerciseList.
+    public void removeExercise() {
+        System.out.println("Select the Exercise you would like to delete: ");
+        viewExercises();
+        int selectedExercise = scan.nextInt();
+        System.out.println("removing: " + workout.getExerciseList().get(selectedExercise).getName());
+        workout.removeExercise(selectedExercise);
+
     }
 
 
