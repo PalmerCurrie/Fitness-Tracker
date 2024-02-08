@@ -67,9 +67,6 @@ public class Workout {
         this.exerciseList.add(exercise);
     }
 
-    // TODO: view Exercises,
-    // for loop to display exercises, should be a method in the ui.
-
 }
 
 
