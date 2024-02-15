@@ -9,7 +9,7 @@ public class Workout {
     private String name;                        // workout's name
     private String date;                        // date of the Workout
     private ArrayList<Exercise> exerciseList;   // list of exercises completed during workout
-    private double weight;
+    private double weight;                      // user's current body weight at time of workout
 
 
     /* REQUIRES: name, date have non-zero length
@@ -67,10 +67,5 @@ public class Workout {
         this.exerciseList.add(exercise);
     }
 
+
 }
-
-
-
-// REQUIRES:
-// MODIFIES:
-// EFFECTS:

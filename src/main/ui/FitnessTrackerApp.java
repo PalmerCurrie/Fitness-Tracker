@@ -3,6 +3,7 @@ package ui;
 import model.Exercise;
 import model.FitnessTracker;
 import model.Workout;
+import model.exceptions.WorkoutNameAlreadyExistsException;
 
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class FitnessTrackerApp {
 
     private Scanner scan;
-    private FitnessTracker ft;
+    private FitnessTracker fitnessTracker;
     private Workout workout;
     private Exercise exercise;
 
@@ -24,7 +25,7 @@ public class FitnessTrackerApp {
     public void initialize() {
         scan = new Scanner(System.in);
         scan.useDelimiter("\n");
-        ft = new FitnessTracker();
+        fitnessTracker = new FitnessTracker();
 
         // load or set FitnessTracker object
     }
@@ -63,8 +64,7 @@ public class FitnessTrackerApp {
         System.out.println("\t4) View Workouts");
         System.out.println("\t5) Save and Exit Application");
     }
-
-    // MODIFIES: this
+    
     // EFFECTS:  processes user input and runs desired method
     public void processFitnessTrackerMenuInput(int option) {
         if (option == 1) {
@@ -151,10 +151,10 @@ public class FitnessTrackerApp {
         System.out.println("Select which Workout you would like to edit:");
         viewWorkouts();
         int selectedWorkoutOption = scan.nextInt();
-        if (selectedWorkoutOption > ft.getListSize()) {
+        if (selectedWorkoutOption > fitnessTracker.getListSize()) {
             System.out.println("That is not a valid input");
         } else {
-            Workout workoutToEdit = ft.getWorkoutList().get(selectedWorkoutOption);
+            Workout workoutToEdit = fitnessTracker.getWorkoutList().get(selectedWorkoutOption);
             System.out.println("What would you like to edit: \n1) Name \n2) Date \n3) Weight \n4) Exercises");
             int editOption = scan.nextInt();
             if (editOption == 1) {
@@ -176,14 +176,14 @@ public class FitnessTrackerApp {
     // MODIFIES: this
     // EFFECTS:  removes exercise at given inputs from Workouts exerciseList.
     public void removeWorkout() {
-        if (ft.getListSize() == 0) {
+        if (fitnessTracker.getListSize() == 0) {
             System.out.println("There are no Workouts to remove");
         } else {
             System.out.println("Select the Exercise you would like to delete: ");
             viewWorkouts();
             int selectedWorkout = scan.nextInt();
-            System.out.println("removing: " + ft.getWorkoutList().get(selectedWorkout).getName());
-            ft.removeWorkout(selectedWorkout);
+            System.out.println("removing: " + fitnessTracker.getWorkoutList().get(selectedWorkout).getName());
+            fitnessTracker.removeWorkout(selectedWorkout);
         }
 
     }
@@ -191,11 +191,11 @@ public class FitnessTrackerApp {
     // EFFECTS: Prints out Workout list by printing the name of each workout
     public void viewWorkouts() {
         System.out.println("printing Workouts");
-        if (ft.getListSize() == 0) {
+        if (fitnessTracker.getListSize() == 0) {
             System.out.println("There are no workouts saved.");
         } else {
-            for (int i = 0; i < ft.getListSize(); i++) {
-                Workout currentWorkout = ft.getWorkoutList().get(i);
+            for (int i = 0; i < fitnessTracker.getListSize(); i++) {
+                Workout currentWorkout = fitnessTracker.getWorkoutList().get(i);
                 System.out.println(i + ") " + currentWorkout.getName() + " - " + currentWorkout.getDate());
             }
         }
@@ -278,10 +278,18 @@ public class FitnessTrackerApp {
         }
     }
 
+
     // MODIFIES: this
     // EFFECTS:  adds workout to FitnessTracker workout list
     public void saveWorkout(Workout workout) {
-        ft.addWorkout(workout);
+        try {
+            fitnessTracker.addWorkout(workout);
+        } catch (WorkoutNameAlreadyExistsException e) {
+            System.out.println("Workout Name already exists, please enter a new name:");
+            String newWorkoutName = scan.next();
+            workout.setName(newWorkoutName);
+            saveWorkout(workout);
+        }
     }
 
 }

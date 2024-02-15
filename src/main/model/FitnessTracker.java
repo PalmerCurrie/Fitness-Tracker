@@ -1,5 +1,7 @@
 package model;
 
+import model.exceptions.WorkoutNameAlreadyExistsException;
+
 import java.util.ArrayList;
 
 
@@ -11,7 +13,6 @@ public class FitnessTracker {
         workoutList = new ArrayList<Workout>();
 
     }
-
 
 
     public ArrayList<Workout> getWorkoutList() {
@@ -29,11 +30,21 @@ public class FitnessTracker {
         this.workoutList.remove(index);
     }
 
+    // REQUIRES: Workout name is not already in Workout List
     // MODIFIES: this
     // EFFECTS:  adds workout to workoutList
-    public void addWorkout(Workout workout) {
-        this.workoutList.add(workout);
+    public void addWorkout(Workout workout) throws WorkoutNameAlreadyExistsException {
+        boolean workoutNameAlreadyExists = false;
+        for (int i = 0; i < this.getListSize(); i++) {
+            if (workout.getName() == this.workoutList.get(i).getName()) {
+                workoutNameAlreadyExists = true;
+            }
+        }
+        if (workoutNameAlreadyExists) {
+            throw new WorkoutNameAlreadyExistsException();
+        } else {
+            this.workoutList.add(workout);
+        }
     }
-
 
 }
