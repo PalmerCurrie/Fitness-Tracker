@@ -1,0 +1,46 @@
+{"workoutList": [
+    {
+        "date": "Feb 21 2024",
+        "exerciseList": [
+            {
+                "reps": 6,
+                "sets": 4,
+                "name": "Bench Press",
+                "weight": 185
+            },
+            {
+                "reps": 8,
+                "sets": 4,
+                "name": "Incline Bench Press",
+                "weight": 65
+            },
+            {
+                "reps": 15,
+                "sets": 2,
+                "name": "Lateral Raise",
+                "weight": 25
+            }
+        ],
+        "name": "Chest Day",
+        "weight": 180
+    },
+    {
+        "date": "Feb 22 2024",
+        "exerciseList": [
+            {
+                "reps": 8,
+                "sets": 4,
+                "name": "Lat Pull Down",
+                "weight": 14
+            },
+            {
+                "reps": 8,
+                "sets": 4,
+                "name": "Pull Ups",
+                "weight": 180
+            }
+        ],
+        "name": "Pull Day",
+        "weight": 179
+    }
+]}

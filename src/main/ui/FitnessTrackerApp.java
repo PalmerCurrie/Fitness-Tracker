@@ -4,19 +4,28 @@ import model.Exercise;
 import model.FitnessTracker;
 import model.Workout;
 import model.exceptions.WorkoutNameAlreadyExistsException;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Fitness Tracker application
 public class FitnessTrackerApp {
 
+    private static final String JSON_STORE = "./data/fitnesstracker.json";
     private Scanner scan;
     private FitnessTracker fitnessTracker;
     private Workout workout;
     private Exercise exercise;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the Fitness Tracker Application
     public FitnessTrackerApp() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runFitnessTrackerApp();
     }
 
@@ -43,7 +52,7 @@ public class FitnessTrackerApp {
             selectedOption = scan.nextInt();
 
             if (selectedOption == 5) {
-                // saveApplication();
+                saveApplication();
                 System.out.println("Exiting.");    // stub
                 keepRunning = false;
             } else {
@@ -53,6 +62,7 @@ public class FitnessTrackerApp {
         }
 
     }
+
 
     // EFFECTS: displays menu interface where user will select option
     public void fitnessTrackerMenu() {
@@ -289,6 +299,30 @@ public class FitnessTrackerApp {
             String newWorkoutName = scan.next();
             workout.setName(newWorkoutName);
             saveWorkout(workout);
+        }
+    }
+
+
+
+
+    // EFFECTS: writes application to file
+    public void saveApplication() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(fitnessTracker);
+            jsonWriter.close();
+            System.out.println("Saved Fitness Tracker Application");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file...: " + JSON_STORE);
+        }
+    }
+
+    public void loadApplication() {
+        try {
+            fitnessTracker = jsonReader.read();
+            System.out.println("Loaded Fitness Tracker App");
+        } catch (IOException | WorkoutNameAlreadyExistsException e) {
+            System.out.println("Unable to read file...: " + JSON_STORE);
         }
     }
 
