@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 
@@ -8,8 +11,9 @@ public class Workout {
 
     private String name;                        // workout's name
     private String date;                        // date of the Workout
-    private ArrayList<Exercise> exerciseList;   // list of exercises completed during workout
     private double weight;                      // user's current body weight at time of workout
+    private ArrayList<Exercise> exerciseList;   // list of exercises completed during workout
+
 
 
     /* REQUIRES: name, date have non-zero length
@@ -65,6 +69,31 @@ public class Workout {
     // EFFECTS: adds exercise to exerciseList
     public void addExercise(Exercise exercise) {
         this.exerciseList.add(exercise);
+    }
+
+
+
+    // Modeled from CPSC210/JsonSerializationDemo
+    // EFFECTS: Writes Workout to Json
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", name);
+        jsonObject.put("date", date);
+        jsonObject.put("weight", weight);
+        jsonObject.put("exerciseList", exerciseListToJson());
+        return jsonObject;
+    }
+
+    // Modeled from CPSC210/JsonSerializationDemo
+    // EFFECTS: returns the exercises in the exerciseList as a json array
+    public JSONArray exerciseListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Exercise ex : exerciseList) {
+            jsonArray.put(ex.toJson());
+        }
+
+        return jsonArray;
     }
 
 

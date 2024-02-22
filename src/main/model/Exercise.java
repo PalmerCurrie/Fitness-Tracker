@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 // Represents an exercise having a name, number of sets, number of reps, and weight (in pounds (lbs))
@@ -51,6 +54,18 @@ public class Exercise {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+
+    // Modeled from CPSC210/JsonSerializationDemo
+    // EFFECTS: Writes Exercise to Json
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", name);
+        jsonObject.put("sets", sets);
+        jsonObject.put("reps", reps);
+        jsonObject.put("weight", weight);
+        return jsonObject;
     }
 
 }

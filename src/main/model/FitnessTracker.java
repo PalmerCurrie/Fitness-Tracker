@@ -3,6 +3,8 @@ package model;
 import model.exceptions.WorkoutNameAlreadyExistsException;
 
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 public class FitnessTracker {
@@ -46,5 +48,29 @@ public class FitnessTracker {
             this.workoutList.add(workout);
         }
     }
+
+
+    // Modeled from CPSC210/JsonSerializationDemo
+    // EFFECTS: Writes FitnessTracker to Json
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("workoutList", workoutListToJson());
+        return jsonObject;
+    }
+
+    // Modeled from CPSC210/JsonSerializationDemo
+    // EFFECTS: returns the workouts in the workoutList as a json array
+    public JSONArray workoutListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Workout wk : workoutList) {
+            jsonArray.put(wk.toJson());
+        }
+
+        return jsonArray;
+    }
+
+
+
 
 }
