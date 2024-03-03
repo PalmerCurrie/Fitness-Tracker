@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
+// Represents a FitnessTracker, having a list of completed workouts that have the name, date,
+// and your weight at the time completed.
 public class FitnessTracker {
 
     private ArrayList<Workout> workoutList;
 
+
+     // EFFECTS: Constructs new fitness tracker with an empty Workout list.
     public FitnessTracker() {
         workoutList = new ArrayList<Workout>();
 
