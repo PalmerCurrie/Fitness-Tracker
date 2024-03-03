@@ -1,0 +1,14 @@
+{"workoutList": [
+    {
+        "date": "March 3",
+        "exerciseList": [],
+        "name": "Chest",
+        "weight": 200
+    },
+    {
+        "date": "March 4",
+        "exerciseList": [],
+        "name": "Pull",
+        "weight": 201
+    }
+]}
