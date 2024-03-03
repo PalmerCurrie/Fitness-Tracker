@@ -55,6 +55,9 @@ public class FitnessTrackerApp {
                 saveApplication();
                 System.out.println("Exiting.");
                 keepRunning = false;
+            } else if (selectedOption == 7) {
+                System.out.println("Exiting Without Saving.");
+                keepRunning = false;
             } else {
                 processFitnessTrackerMenuInput(selectedOption);
             }
@@ -72,8 +75,9 @@ public class FitnessTrackerApp {
         System.out.println("\t2) Edit Workout");
         System.out.println("\t3) Remove Workout");
         System.out.println("\t4) View Workouts");
-        System.out.println("\t5) Load/Reload In Previous Data");
+        System.out.println("\t5) Load/Reload Previous Data");
         System.out.println("\t6) Save and Exit Application");
+        System.out.println("\t7) Exit Application Without Saving");
     }
     
     // EFFECTS:  processes user input and runs desired method
