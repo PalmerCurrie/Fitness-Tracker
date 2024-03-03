@@ -30,7 +30,6 @@ public class JsonReader {
     public FitnessTracker read() throws IOException, WorkoutNameAlreadyExistsException {
         String jsonData = readFile(sourceFile);
         JSONObject jsonObject = new JSONObject(jsonData);
-
         return parseFitnessTracker(jsonObject);
     }
 
@@ -59,7 +58,7 @@ public class JsonReader {
     // MODIFIES: ft
     // EFFECTS:  parses workouts from JSON object and adds it to FitnessTracker
     private void addWorkouts(FitnessTracker ft, JSONObject jsonObject) throws WorkoutNameAlreadyExistsException {
-        JSONArray jsonArray = new JSONArray("workoutList");
+        JSONArray jsonArray = jsonObject.getJSONArray("workoutList");
         for (Object json : jsonArray) {
             JSONObject nextWorkout = (JSONObject) json;
             addWorkoutToFitnessTracker(ft, nextWorkout);
@@ -72,9 +71,8 @@ public class JsonReader {
             throws WorkoutNameAlreadyExistsException {
         String name = jsonObject.getString("name");
         String date = jsonObject.getString("date");
-        String weight = jsonObject.getString("weight");
-        double weightDouble = Double.parseDouble(weight);
-        Workout workout = new Workout(name, date, weightDouble);
+        double weight = jsonObject.getDouble("weight");
+        Workout workout = new Workout(name, date, weight);
         addExercises(workout, jsonObject);
 
         ft.addWorkout(workout);
@@ -85,7 +83,7 @@ public class JsonReader {
     // MODIFIES: wk
     // EFFECTS:  parses exercises from JSON object and adds it to Workout
     private void addExercises(Workout wk, JSONObject jsonObject) throws WorkoutNameAlreadyExistsException {
-        JSONArray jsonArray = new JSONArray("exerciseList");
+        JSONArray jsonArray = jsonObject.getJSONArray("exerciseList");
         for (Object json : jsonArray) {
             JSONObject nextExercise = (JSONObject) json;
             addExerciseToWorkout(wk, nextExercise);
@@ -97,13 +95,10 @@ public class JsonReader {
     private void addExerciseToWorkout(Workout wk, JSONObject jsonObject)
             throws WorkoutNameAlreadyExistsException {
         String name = jsonObject.getString("name");
-        String sets = jsonObject.getString("sets");
-        String reps = jsonObject.getString("reps");
-        String weight = jsonObject.getString("weight");
-        double weightDouble = Double.parseDouble(weight);
-        double setsDouble = Double.parseDouble(sets);
-        int repsInt = Integer.parseInt(reps);
-        Exercise exercise = new Exercise(name, setsDouble, repsInt, weightDouble);
+        double sets = jsonObject.getDouble("sets");
+        int reps = jsonObject.getInt("reps");
+        double weight = jsonObject.getDouble("weight");
+        Exercise exercise = new Exercise(name, sets, reps, weight);
         wk.addExercise(exercise);
 
 

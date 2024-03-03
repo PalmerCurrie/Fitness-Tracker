@@ -1,0 +1,40 @@
+{"workoutList": [
+    {
+        "date": "Mar 3",
+        "exerciseList": [
+            {
+                "reps": 4,
+                "sets": 4,
+                "name": "Bench",
+                "weight": 80
+            },
+            {
+                "reps": 8,
+                "sets": 4,
+                "name": "Incline Bench",
+                "weight": 70
+            }
+        ],
+        "name": "Chest Day",
+        "weight": 200
+    },
+    {
+        "date": "Mar 4",
+        "exerciseList": [
+            {
+                "reps": 8,
+                "sets": 4,
+                "name": "Lat Pull Down",
+                "weight": 160
+            },
+            {
+                "reps": 12,
+                "sets": 4,
+                "name": "Bicep Curl",
+                "weight": 35
+            }
+        ],
+        "name": "Pull Day",
+        "weight": 201
+    }
+]}

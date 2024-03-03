@@ -14,7 +14,7 @@ import java.util.Scanner;
 // Fitness Tracker application
 public class FitnessTrackerApp {
 
-    private static final String JSON_STORE = "./data/fitnesstracker.json";
+    private static final String JSON_STORE = "./data/fitnesstrackertestingmarch3.json";
     private Scanner scan;
     private FitnessTracker fitnessTracker;
     private Workout workout;
@@ -51,9 +51,9 @@ public class FitnessTrackerApp {
             fitnessTrackerMenu();
             selectedOption = scan.nextInt();
 
-            if (selectedOption == 5) {
+            if (selectedOption == 6) {
                 saveApplication();
-                System.out.println("Exiting.");    // stub
+                System.out.println("Exiting.");
                 keepRunning = false;
             } else {
                 processFitnessTrackerMenuInput(selectedOption);
@@ -72,7 +72,8 @@ public class FitnessTrackerApp {
         System.out.println("\t2) Edit Workout");
         System.out.println("\t3) Remove Workout");
         System.out.println("\t4) View Workouts");
-        System.out.println("\t5) Save and Exit Application");
+        System.out.println("\t5) Load/Reload In Previous Data");
+        System.out.println("\t6) Save and Exit Application");
     }
     
     // EFFECTS:  processes user input and runs desired method
@@ -85,6 +86,8 @@ public class FitnessTrackerApp {
             removeWorkout();
         } else if (option == 4) {
             viewWorkouts();
+        } else if (option == 5) {
+            loadApplication();
         } else {
             System.out.println("That is not a valid option.");
             System.out.println("Please enter the number corresponding to the option you would like to select");
@@ -268,7 +271,7 @@ public class FitnessTrackerApp {
             System.out.println("Enter new Reps:");
             exerciseToEdit.setReps(scan.nextInt());
         } else if (editOption == 4) {
-            System.out.println("Enter new Reps:");
+            System.out.println("Enter new Weight:");
             exerciseToEdit.setWeight(scan.nextDouble());
         } else {
             System.out.println("That is not a valid input.");
@@ -304,7 +307,6 @@ public class FitnessTrackerApp {
 
 
 
-
     // EFFECTS: writes application to file
     public void saveApplication() {
         try {
@@ -317,6 +319,9 @@ public class FitnessTrackerApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS:  loads in FitnessTracker from previously saved Json file in data folder.
+    // catches exception if an error happens when trying to load in Json file.
     public void loadApplication() {
         try {
             fitnessTracker = jsonReader.read();
