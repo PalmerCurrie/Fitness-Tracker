@@ -15,6 +15,5 @@ put into my personal fitness levels which is why I want to design this project.
 - As a user, I want to be able to edit existing Workouts and Exercises
 - As a user, I want to be able to view a list of completed Workouts
 - As a user, I want to be able to add my weight
-- As a user, I want to be able to view an individual Workout
 - As a user, I want to be able to have the option to save or not save changes made to my FitnessTracker
 - As a user, I want to be able to have the option to load an existing data or to start a new FitnessTracker
