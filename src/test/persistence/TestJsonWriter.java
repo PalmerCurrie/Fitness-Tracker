@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Exercise;
 import model.FitnessTracker;
 import model.Workout;
 import model.exceptions.WorkoutNameAlreadyExistsException;
@@ -16,7 +17,6 @@ public class TestJsonWriter {
     @Test
     void testWriterInvalidFileName() {
         try {
-            FitnessTracker fitnessTracker = new FitnessTracker();
             JsonWriter writer = new JsonWriter("./data/s\0illegalfilenamewontcompile.json");
             writer.open();
             fail("fails, IOException expected since illegal file name");
@@ -50,6 +50,8 @@ public class TestJsonWriter {
             FitnessTracker fitnessTracker = new FitnessTracker();
             fitnessTracker.addWorkout(new Workout("Chest", "March 3", 200));
             fitnessTracker.addWorkout(new Workout("Pull", "March 4", 201));
+            Workout workout = fitnessTracker.getWorkoutList().get(0);
+            workout.addExercise(new Exercise("Bench", 4, 4 , 20));
             JsonWriter writer = new JsonWriter("./data/testWriterNormalFitnessTracker.json");
             writer.open();
             writer.write(fitnessTracker);
@@ -57,11 +59,17 @@ public class TestJsonWriter {
 
             JsonReader reader = new JsonReader("./data/testWriterNormalFitnessTracker.json");
             fitnessTracker = reader.read();
-            List<Workout> workoutList = fitnessTracker.getWorkoutList();
             assertEquals(2, fitnessTracker.getListSize());
             assertEquals("Chest", fitnessTracker.getWorkoutList().get(0).getName());
             assertEquals("March 3", fitnessTracker.getWorkoutList().get(0).getDate());
             assertEquals(200, fitnessTracker.getWorkoutList().get(0).getWeight());
+
+
+            assertEquals("Bench", workout.getExerciseList().get(0).getName());
+            assertEquals(4, workout.getExerciseList().get(0).getSets());
+            assertEquals(4, workout.getExerciseList().get(0).getReps());
+            assertEquals(20, workout.getExerciseList().get(0).getWeight());
+
             assertEquals("Pull", fitnessTracker.getWorkoutList().get(1).getName());
             assertEquals("March 4", fitnessTracker.getWorkoutList().get(1).getDate());
             assertEquals(201, fitnessTracker.getWorkoutList().get(1).getWeight());

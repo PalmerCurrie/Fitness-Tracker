@@ -49,6 +49,14 @@ public class TestJsonReader {
             assertEquals("Chest", fitnessTracker.getWorkoutList().get(0).getName());
             assertEquals("March 3", fitnessTracker.getWorkoutList().get(0).getDate());
             assertEquals(200, fitnessTracker.getWorkoutList().get(0).getWeight());
+
+            Workout workout = fitnessTracker.getWorkoutList().get(0);
+
+            assertEquals("Bench", workout.getExerciseList().get(0).getName());
+            assertEquals(4, workout.getExerciseList().get(0).getSets());
+            assertEquals(4, workout.getExerciseList().get(0).getReps());
+            assertEquals(20, workout.getExerciseList().get(0).getWeight());
+
             assertEquals("Pull", fitnessTracker.getWorkoutList().get(1).getName());
             assertEquals("March 4", fitnessTracker.getWorkoutList().get(1).getDate());
             assertEquals(201, fitnessTracker.getWorkoutList().get(1).getWeight());

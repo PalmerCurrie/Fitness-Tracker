@@ -1,7 +1,12 @@
 {"workoutList": [
     {
         "date": "March 3",
-        "exerciseList": [],
+        "exerciseList": [{
+            "reps": 4,
+            "sets": 4,
+            "name": "Bench",
+            "weight": 20
+        }],
         "name": "Chest",
         "weight": 200
     },

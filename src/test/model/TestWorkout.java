@@ -1,11 +1,17 @@
 package model;
 
 import model.Exercise;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
+import model.exceptions.WorkoutNameAlreadyExistsException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import persistence.JsonReader;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 
 public class TestWorkout {
@@ -102,7 +108,33 @@ public class TestWorkout {
         assertEquals(exerciseList2, wk1.getExerciseList());
     }
 
+    @Test
+    void testToJson() {
+        wk1.exerciseListToJson();
+        JsonReader reader = new JsonReader("./data/testWriterNormalFitnessTracker.json");
+        try {
+            FitnessTracker fitnessTracker = reader.read();
+            assertEquals(2, fitnessTracker.getListSize());
+            assertEquals("Chest", fitnessTracker.getWorkoutList().get(0).getName());
+            assertEquals("March 3", fitnessTracker.getWorkoutList().get(0).getDate());
+            assertEquals(200, fitnessTracker.getWorkoutList().get(0).getWeight());
 
+            Workout workout = fitnessTracker.getWorkoutList().get(0);
+
+            assertEquals("Bench", workout.getExerciseList().get(0).getName());
+            assertEquals(4, workout.getExerciseList().get(0).getSets());
+            assertEquals(4, workout.getExerciseList().get(0).getReps());
+            assertEquals(20, workout.getExerciseList().get(0).getWeight());
+
+            assertEquals("Pull", fitnessTracker.getWorkoutList().get(1).getName());
+            assertEquals("March 4", fitnessTracker.getWorkoutList().get(1).getDate());
+            assertEquals(201, fitnessTracker.getWorkoutList().get(1).getWeight());
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        } catch (WorkoutNameAlreadyExistsException e) {
+            fail("exception should not be thrown.");
+        }
+    }
 
 
 
