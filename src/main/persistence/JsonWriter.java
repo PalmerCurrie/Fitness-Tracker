@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.io.*;
 
 // Modeled from CPSC210/JsonSerializationDemo
+// JsonWriter writes data from FitnessTracker to a json file.
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

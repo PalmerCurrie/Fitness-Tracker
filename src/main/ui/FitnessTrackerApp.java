@@ -11,10 +11,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-// Fitness Tracker application
+// Fitness Tracker application is an application where users can create new workouts,
+// inside these workouts they can add exercises including sets reps and weight, and they
+// can enter the name and date of each Workout they create. Users can also save and load
+// in an existing FitnessTracker
 public class FitnessTrackerApp {
 
-    private static final String JSON_STORE = "./data/fitnesstrackertestingmarch3.json";
+    private static final String JSON_STORE = "./data/fitnesstracker.json";
     private Scanner scan;
     private FitnessTracker fitnessTracker;
     private Workout workout;
