@@ -61,6 +61,8 @@ public class FitnessTrackerUI extends JFrame {
 
         setVisible(true);
 
+       // FitnessTrackerUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    something to exit program on X click
+
     }
 
 
@@ -69,6 +71,7 @@ public class FitnessTrackerUI extends JFrame {
     public void addButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(new JButton(new HelperButtonClass()));
+        buttonPanel.add(new JButton(new CreateNewWorkout()));
         buttonPanel.add(new JButton(new ViewWorkouts()));
         buttonPanel.add(new JButton(new LoadFitnessTracker()));
 
@@ -76,50 +79,130 @@ public class FitnessTrackerUI extends JFrame {
 
     }
 
-    // represents what happens when user clicks this button.
+    // MODIFIES: this
+    // EFFECTS: what does button do on button click
     public class HelperButtonClass extends AbstractAction {
 
-        // constructor
+        // MODIFIES: this
+        // EFFECTS:    creates button with name
         HelperButtonClass() {
             super("button name");
         }
 
-        // performs action on button click
+        // MODIFIES:  this or ft
+        // EFFECTS: on button click performs x action
         @Override
         public void actionPerformed(ActionEvent event) {
-            // do something on button click
+
         }
     }
 
-    // represents what happens when user clicks this button.
+    // MODIFIES: this
+    // EFFECTS: what does button do on button click
+    public class CreateNewWorkout extends AbstractAction {
+
+        // MODIFIES: this
+        // EFFECTS:  Creates button with name Create New Workout.
+        CreateNewWorkout() {
+            super("Create New Workout");
+        }
+
+        // MODIFIES: this, ft
+        // EFFECTS: On button click creates new panel for users to enter workout information.
+        //          on create workout button click creates new workout based on user information and adds to ft
+        @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
+            JPanel newWorkoutPanel = new JPanel();
+            newWorkoutPanel.setSize(350, 200);
+
+            desktop.add(newWorkoutPanel);
+            newWorkoutPanel.setVisible(true);
+
+            // Creates prompt for user
+            JLabel nameLabel = new JLabel("Name: ");
+            nameLabel.setBounds(20, 20, 200, 20);
+            JLabel dateLabel = new JLabel("Date: ");
+            dateLabel.setBounds(20, 60, 200, 20);
+            JLabel weightLabel = new JLabel("Weight: ");
+            weightLabel.setBounds(20, 100, 200, 20);
+
+            // Creates text field for uses to input
+            JTextField workoutName = new JTextField();
+            workoutName.setBounds(65, 20, 150, 25);
+            JTextField workoutDate = new JTextField();
+            workoutDate.setBounds(65, 60, 150, 25);
+            JTextField workoutWeight = new JTextField();
+            workoutWeight.setBounds(65, 100, 150, 25);
+
+            // Creates button
+            JButton submitButton = new JButton("Create Workout");
+            submitButton.setBounds(100, 130, 150, 25);
+
+            // Creates new method on button press
+            submitButton.addActionListener(e -> {
+                String wkName = workoutName.getText();
+                String wkDate = workoutDate.getText();
+                String wkWeight = workoutWeight.getText();
+                JOptionPane.showMessageDialog(null, "You entered: " + wkName + wkDate + wkWeight);
+                Workout newWorkout = new Workout(wkName, wkDate, Double.parseDouble(wkWeight));
+                try {
+                    ft.addWorkout(newWorkout);
+                } catch (WorkoutNameAlreadyExistsException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+
+            // Adds ui to the newWorkoutPanel
+            newWorkoutPanel.add(nameLabel);
+            newWorkoutPanel.add(dateLabel);
+            newWorkoutPanel.add(weightLabel);
+            newWorkoutPanel.add(workoutName);
+            newWorkoutPanel.add(workoutDate);
+            newWorkoutPanel.add(workoutWeight);
+            newWorkoutPanel.add(workoutName);
+            newWorkoutPanel.add(submitButton);
+
+
+            newWorkoutPanel.setLayout(null);
+
+
+
+        }
+    }
+
+
+
+    // MODIFIES: this
+    // EFFECTS: shows list of workouts in GUI, showing the name and date for each workout
     public class ViewWorkouts extends AbstractAction {
-        // constructor
+
+        // MODIFIES: this
+        // EFFECTS: Creates button for viewing Workouts
         ViewWorkouts() {
             super("View Workouts");
         }
 
-            // performs action on button click
+
+        // Modifies: this
+        // EFFECTS: adds all workouts in list to JList and sets the workoutList frame visible. on button click
         @Override
         public void actionPerformed(ActionEvent event) {
             DefaultListModel<String> model = new DefaultListModel<>();
             JList<String> workoutJList = new JList<>(model);
-
 
             List<Workout> workoutList = ft.getWorkoutList();
             for (Workout wk : workoutList) {
                 model.addElement(wk.getName() + " - " + wk.getDate());
             }
 
-
-
             workoutListFrame.add(workoutJList);
             workoutJList.setLayoutOrientation(JList.VERTICAL);
             workoutJList.setVisible(true);
             workoutJList.ensureIndexIsVisible(4); // always shows 4 indexes???
             workoutListFrame.setVisible(true);
-
         }
-
     }
 
     // MODIFIES: ft
@@ -127,12 +210,14 @@ public class FitnessTrackerUI extends JFrame {
     //          on button click
     public class LoadFitnessTracker extends AbstractAction {
 
-        // constructor
+        // MODIFIES: this
+        // EFFECTS: Creates button for loading previous fitness tracker
         LoadFitnessTracker() {
             super("Load Previous Fitness Tracker");
         }
 
-        // performs action on button click
+        // Modifies: ft
+        // EFFECTS: loads previously saved fitness tracker from json file into ft on button click
         @Override
         public void actionPerformed(ActionEvent event) {
             loadApplication();
@@ -157,7 +242,7 @@ public class FitnessTrackerUI extends JFrame {
 
 
     /* BUTTONS:   (FitnessTrackerMenu)
-    * Create new Workout
+    -----* Create new Workout
     * Edit Workout
     * Remove Workout
     -----* View Workouts
