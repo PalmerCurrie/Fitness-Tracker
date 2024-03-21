@@ -314,6 +314,8 @@ public class FitnessTrackerApp {
 
 
 
+    // Loading/Saving Application From/To JSon
+
     // EFFECTS: writes application to file
     public void saveApplication() {
         try {
