@@ -543,7 +543,6 @@ public class FitnessTrackerUI extends JFrame {
         public void actionPerformed(ActionEvent event) {
             System.exit(0);
         }
-
     }
 
 
