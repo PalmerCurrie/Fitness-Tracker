@@ -61,6 +61,8 @@ public class FitnessTrackerUI extends JFrame {
         addButtonPanel();
         setVisible(true);
 
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
     }
 
     // Represents a Graph that will graph out User's Workout Weight data.
@@ -565,13 +567,14 @@ public class FitnessTrackerUI extends JFrame {
        - ------ remove workout from workout list
        - ------ re order list from top down
        - ------ add in visual component  (graph of weight and date?????)
-       - documentation for grader
-       - make sure all class / method / constructor have documentation
+       - ------ documentation for grader
+       - ------ make sure all class / method / constructor have documentation
        - add in add exercise and view exercises  (do this last if i have time)
 
        2 Actions:
        DONE - remove a workout from workout List
        DONE - re order the list from top down
+       DONE - add a workout to Fitness Tracker
      */
 
 
