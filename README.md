@@ -19,7 +19,7 @@ put into my personal fitness levels which is why I want to design this project.
 - As a user, I want to be able to have the option to load an existing data or to start a new FitnessTracker
 
 
-# Instructions for Grader
+## Instructions for Grader
 
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the Create New Workout button in the Fitness Tracker Panel, this will open up a menu for the user to input the Workout's Name, Date, and Weight. Once user has inputed click Create Workout to add the X, Workout, to the Y,  Fitness Tracker.
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking the View Workouts button in the Fitness Tracker Panel, this will open up a Workout List menu which will display the Workouts in the Fitness Tracker. You can reorder the Workouts by clicking the Reorder in Descending Order button. Or you can remove a workout by selection, clicking on one of the workouts, and pressing the Remove Workout button.
