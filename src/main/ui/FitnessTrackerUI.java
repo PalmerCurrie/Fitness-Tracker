@@ -163,10 +163,10 @@ public class FitnessTrackerUI extends JFrame {
 
 
     // Helper method that adds button panel
+    // MODIFIES: buttonPanel
+    // EFFECTS: adds all buttons to button panel
     public void addButtonPanel() {
         JPanel buttonPanel = new JPanel();
-        //buttonPanel.add(new JButton(new HelperButtonClass())); // TODO: REMOVE ON FINAL COMMIT
-
         buttonPanel.add(new JButton(new CreateNewWorkout()));
         buttonPanel.add(new JButton(new ViewWorkouts()));
         buttonPanel.add(new JButton(new ViewWeightProgress()));
@@ -176,25 +176,6 @@ public class FitnessTrackerUI extends JFrame {
 
         controlPanel.add(buttonPanel);
 
-    }
-
-    // TODO:  REMOVE ON FINAL COMMIT
-    // MODIFIES: this
-    // EFFECTS: what does button do on button click
-    public class HelperButtonClass extends AbstractAction {
-
-        // MODIFIES: this
-        // EFFECTS:    creates button with name
-        HelperButtonClass() {
-            super("button name");
-        }
-
-        // MODIFIES:  this or ft
-        // EFFECTS: on button click performs x action
-        @Override
-        public void actionPerformed(ActionEvent event) {
-
-        }
     }
 
     // Represents a button that will display User's weight progress on click
@@ -398,18 +379,17 @@ public class FitnessTrackerUI extends JFrame {
                 char indexChar = selectedItem.charAt(0);
                 int index = indexChar - '0';
                 Workout selectedWorkout = ft.getWorkoutList().get(index);
-                openWorkoutMenu(selectedWorkout);
+//                openWorkoutMenu(selectedWorkout);
             }
         }
     }
 
 
-    // TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // EFFECTS: Opens Workout menu for the selected workout, has buttons to add, edit, view, remove, and save exercises
     //          to the workout, and to save workout to fitness tracker.
-    public void openWorkoutMenu(Workout wk) {
-        // TODO
-    }
+//    public void openWorkoutMenu(Workout wk) {
+//        // TODO
+//    }
 
 
     // Represents a button that will select workout from workout list and remove that selected workout
@@ -545,36 +525,6 @@ public class FitnessTrackerUI extends JFrame {
         }
     }
 
-
-
-
-
-    /* BUTTONS:   (FitnessTrackerMenu)
-    -----* Create new Workout
-    * Edit Workout
-    -----*  Remove Workout
-    -----* View Workouts
-    -----* Load/Reload Previous data
-    -----* Save and Exit application
-    -----* Exit Application without saving
-    *
-     */
-
-    /*
-    TODO:
-       - ------ add in Save application feature / button
-       - ------ remove workout from workout list
-       - ------ re order list from top down
-       - ------ add in visual component  (graph of weight and date?????)
-       - ------ documentation for grader
-       - ------ make sure all class / method / constructor have documentation
-       - add in add exercise and view exercises  (do this last if i have time)
-
-       2 Actions:
-       DONE - remove a workout from workout List
-       DONE - re order the list from top down
-       DONE - add a workout to Fitness Tracker
-     */
 
 
     // Starts the application
