@@ -65,6 +65,9 @@ public class Exercise {
         jsonObject.put("sets", sets);
         jsonObject.put("reps", reps);
         jsonObject.put("weight", weight);
+
+        EventLog.getInstance().logEvent(new Event("Write Exercise to Json"));
+
         return jsonObject;
     }
 

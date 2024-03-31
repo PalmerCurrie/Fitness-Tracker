@@ -60,6 +60,7 @@ public class FitnessTrackerApp {
                 keepRunning = false;
             } else if (selectedOption == 7) {
                 System.out.println("Exiting Without Saving.");
+                fitnessTracker.printLogs();
                 keepRunning = false;
             } else {
                 processFitnessTrackerMenuInput(selectedOption);

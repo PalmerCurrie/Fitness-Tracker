@@ -415,7 +415,7 @@ public class FitnessTrackerUI extends JFrame {
                 int index = indexChar - '0';
                 List<Workout> workoutList = ft.getWorkoutList();
                 Workout selectedWorkout = workoutList.get(index);
-                workoutList.remove(selectedWorkout);
+                ft.removeWorkout(selectedWorkout);
             }
         }
     }
@@ -502,6 +502,7 @@ public class FitnessTrackerUI extends JFrame {
                 jsonWriter.write(ft);
                 jsonWriter.close();
                 System.out.println("Saved Fitness Tracker Application");
+                ft.printLogs();
             } catch (FileNotFoundException e) {
                 System.out.println("Unable to write to file...: " + JSON_STORE);
             }
@@ -521,6 +522,7 @@ public class FitnessTrackerUI extends JFrame {
         // EFFECTS: on click closes FitnessTracker without saving
         @Override
         public void actionPerformed(ActionEvent event) {
+            ft.printLogs();
             System.exit(0);
         }
     }

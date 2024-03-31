@@ -63,12 +63,19 @@ public class Workout {
     // EFFECTS: removes exercise at index from exerciseList
     public void removeExercise(int index) {
         this.exerciseList.remove(index);
+
+        EventLog.getInstance().logEvent(new Event("Removed Exercise: "
+                + this.exerciseList.get(index).getName()));
+
     }
 
     // MODIFIES: this
     // EFFECTS: adds exercise to exerciseList
     public void addExercise(Exercise exercise) {
         this.exerciseList.add(exercise);
+
+        EventLog.getInstance().logEvent(new Event("Added Exercise: "
+                + exercise.getName()));
     }
 
 
@@ -81,6 +88,9 @@ public class Workout {
         jsonObject.put("date", date);
         jsonObject.put("weight", weight);
         jsonObject.put("exerciseList", exerciseListToJson());
+
+        EventLog.getInstance().logEvent(new Event("Write Workout to Json"));
+
         return jsonObject;
     }
 
@@ -92,6 +102,8 @@ public class Workout {
         for (Exercise ex : exerciseList) {
             jsonArray.put(ex.toJson());
         }
+
+        EventLog.getInstance().logEvent(new Event("Write ExerciseList to Json array"));
 
         return jsonArray;
     }

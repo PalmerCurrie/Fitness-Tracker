@@ -30,9 +30,20 @@ public class FitnessTracker {
 
     // REQUIRES: getListSize() > 0 and index < getListSize()
     // MODIFIES: this
-    // EFFECTS:  removes exercise at index from exerciseList
+    // EFFECTS:  removes specified workout from FitnessTracker workout list
     public void removeWorkout(int index) {
         this.workoutList.remove(index);
+        EventLog.getInstance().logEvent(new Event("Removed Workout: "
+                + this.workoutList.get(index).getName() + " - " + this.workoutList.get(index).getDate()));
+    }
+
+    // REQUIRES: getListSize() > 0
+    // MODIFIES: this
+    // EFFECTS:  removes specified workout from FitnessTracker workout list
+    public void removeWorkout(Workout workout) {
+        this.workoutList.remove(workout);
+        EventLog.getInstance().logEvent(new Event("Removed Workout: "
+                + workout.getName() + " - " + workout.getDate()));
     }
 
     // REQUIRES: Workout name is not already in Workout List
@@ -46,9 +57,14 @@ public class FitnessTracker {
             }
         }
         if (workoutNameAlreadyExists) {
+            EventLog.getInstance().logEvent(new Event("Duplicate Workout Name Detected: "
+                    + workout.getName()));
             throw new WorkoutNameAlreadyExistsException();
+
         } else {
             this.workoutList.add(workout);
+            EventLog.getInstance().logEvent(new Event("Added Workout: "
+                    + workout.getName() + " - " + workout.getDate()));
         }
     }
 
@@ -58,6 +74,9 @@ public class FitnessTracker {
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("workoutList", workoutListToJson());
+
+        EventLog.getInstance().logEvent(new Event("Write FitnessTracker to Json"));
+
         return jsonObject;
     }
 
@@ -70,7 +89,18 @@ public class FitnessTracker {
             jsonArray.put(wk.toJson());
         }
 
+        EventLog.getInstance().logEvent(new Event("Write WorkoutList to Json array"));
+
         return jsonArray;
+    }
+
+    // EFFECTS: prints out all logs in EventLog to console
+    public void printLogs() {
+        EventLog eventLog = EventLog.getInstance();
+        for (Event event : eventLog) {
+            System.out.println(event.toString());
+        }
+
     }
 
 

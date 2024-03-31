@@ -42,5 +42,11 @@
         ],
         "name": "Pull Day",
         "weight": 179
+    },
+    {
+        "date": "March 21 2024",
+        "exerciseList": [],
+        "name": "Leg Day",
+        "weight": 185
     }
 ]}
