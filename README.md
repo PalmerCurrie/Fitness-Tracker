@@ -37,4 +37,4 @@ Added Workout: CHeSt Day  - Aprul 1 2024 \
 Sun Mar 31 12:27:20 PDT 2024 \
 Removed Workout: CHeSt Day  - Aprul 1 2024  \
 Sun Mar 31 12:27:31 PDT 2024 \
-Added Workout: Chest Day - April 1 2024 \
+Added Workout: Chest Day - April 1 2024
