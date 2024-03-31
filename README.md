@@ -26,3 +26,15 @@ put into my personal fitness levels which is why I want to design this project.
 - You can locate my visual component by clicking the View Weight Progress button in the Fitness Tracker Panel. This will open up a graph of the user's latest 10 workouts displaying their weights in a line graph.
 - You can save the state of my application by clicking the Save Fitness Tracker button in the Fitness Tracker Panel, this will save the current Fitness Tracker to file.
 - You can reload the state of my application by clicking the Load Previous Fitness Tracker button in the Fitness Tracker Panel, this will load in the previously stored data.
+
+
+## Phase 4: Task 2:
+
+Sun Mar 31 12:26:55 PDT 2024
+Added Workout: Shoulder Day - March 31 2024
+Sun Mar 31 12:27:16 PDT 2024
+Added Workout: CHeSt Day  - Aprul 1 2024
+Sun Mar 31 12:27:20 PDT 2024
+Removed Workout: CHeSt Day  - Aprul 1 2024
+Sun Mar 31 12:27:31 PDT 2024
+Added Workout: Chest Day - April 1 2024
