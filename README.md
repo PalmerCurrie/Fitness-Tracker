@@ -30,11 +30,11 @@ put into my personal fitness levels which is why I want to design this project.
 
 ## Phase 4: Task 2:
 
-Sun Mar 31 12:26:55 PDT 2024 
-Added Workout: Shoulder Day - March 31 2024 
-Sun Mar 31 12:27:16 PDT 2024 
-Added Workout: CHeSt Day  - Aprul 1 2024 
-Sun Mar 31 12:27:20 PDT 2024 
-Removed Workout: CHeSt Day  - Aprul 1 2024 
-Sun Mar 31 12:27:31 PDT 2024 
-Added Workout: Chest Day - April 1 2024 
+Sun Mar 31 12:26:55 PDT 2024 \
+Added Workout: Shoulder Day - March 31 2024  \
+Sun Mar 31 12:27:16 PDT 2024  \
+Added Workout: CHeSt Day  - Aprul 1 2024 \
+Sun Mar 31 12:27:20 PDT 2024 \
+Removed Workout: CHeSt Day  - Aprul 1 2024  \
+Sun Mar 31 12:27:31 PDT 2024 \
+Added Workout: Chest Day - April 1 2024 \
