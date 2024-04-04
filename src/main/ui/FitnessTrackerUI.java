@@ -388,7 +388,7 @@ public class FitnessTrackerUI extends JFrame {
     // EFFECTS: Opens Workout menu for the selected workout, has buttons to add, edit, view, remove, and save exercises
     //          to the workout, and to save workout to fitness tracker.
 //    public void openWorkoutMenu(Workout wk) {
-//        // TODO
+//
 //    }
 
 
