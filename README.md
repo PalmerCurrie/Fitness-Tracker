@@ -41,5 +41,6 @@ Added Workout: Chest Day - April 1 2024
 
 ## Phase 4: Task 3
 
-  I would implement a Writable interface that my Exercise, Workout, and FitnessTracker classes would implement. This would make it easier to implement my toJson methods in my classes which would convert the objects into Json format for saving.
-  The toJson method in my FitnessTracker, Workout, and Exercise all work in a very similar way and have a couple lines of duplicate code that could be abstracted out into a superclass to avoid duplication. For example, the only difference in the workoutListToJson method and the exerciseListToJson method is the for loop handling the different respected objects, and the eventLog string. I could create an interface or an abstract class that would be a super type to these allowing me to create a single method that would work on both of the types and removing the duplication.
+  I would implement a Writable interface that my Exercise, Workout, and FitnessTracker classes would implement. This would make it easier to implement my toJson methods in my classes which would convert the objects into Json format for saving.  
+  
+  The toJson method in my FitnessTracker, Workout, and Exercise all work in a very similar way and have a couple lines of duplicate code that could be abstracted out into a superclass to avoid duplication. For example, the only difference in the workoutListToJson method and the exerciseListToJson method is the for loop handling the different respected objects, and the eventLog string. I could create an interface or an abstract class that would be a super type to these allowing me to create a single method that would work on both of the types and removing the duplication.  
