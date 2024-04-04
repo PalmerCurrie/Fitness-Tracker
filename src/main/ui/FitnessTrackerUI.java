@@ -81,13 +81,8 @@ public class FitnessTrackerUI extends JFrame {
         }
 
         // MODIFIES: graphFrame
-        // EFFECTS: paints component (data) onto graph frame
-        @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-        @Override
-        protected void paintComponent(Graphics graphic) {
-            super.paintComponent(graphic);
-            Graphics2D graphic2D = (Graphics2D) graphic;
-
+        // EFFECTS: sets up GraphFrame, draws the axis and labels.
+        public void setUpGraph(Graphics2D graphic2D) {
             // Draw the x-axis, y-axis and Labels
             graphic2D.setColor(Color.WHITE);
             graphic2D.drawLine(MARGIN, HEIGHT - MARGIN, WIDTH - MARGIN, HEIGHT - MARGIN);   // x-axis
@@ -95,6 +90,16 @@ public class FitnessTrackerUI extends JFrame {
             graphic2D.drawString("Weight Progress of Last 10 Workouts", (WIDTH / 2) - 100, 20);
             graphic2D.drawString("Workouts (Oldest to Newest)", (WIDTH / 2) - 75, HEIGHT - 10);
             graphic2D.drawString("Weight", 5, HEIGHT / 2);
+
+        }
+
+        // MODIFIES: graphFrame
+        // EFFECTS: paints component (data) onto graph frame
+        @Override
+        protected void paintComponent(Graphics graphic) {
+            super.paintComponent(graphic);
+            Graphics2D graphic2D = (Graphics2D) graphic;
+            setUpGraph(graphic2D);
 
 
             // Get data and Max height
@@ -213,16 +218,10 @@ public class FitnessTrackerUI extends JFrame {
             super("Create New Workout");
         }
 
-        // MODIFIES: this, ft
-        // EFFECTS: On button click creates new panel for users to enter workout information.
-        //          on create workout button click creates new workout based on user information and adds to ft
-        @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-        @Override
-        public void actionPerformed(ActionEvent event) {
-
-            JPanel newWorkoutPanel = new JPanel();
+        // MODIFIES: this, desktop, newWorkoutPanel
+        // EFFECTS:  sets up newWorkoutPanel with frame and text fields
+        public JPanel setUpCreateWorkoutFrame(JPanel newWorkoutPanel) {
             newWorkoutPanel.setSize(350, 200);
-
             desktop.add(newWorkoutPanel);
             newWorkoutPanel.setVisible(true);
 
@@ -233,6 +232,35 @@ public class FitnessTrackerUI extends JFrame {
             dateLabel.setBounds(20, 60, 200, 20);
             JLabel weightLabel = new JLabel("Weight: ");
             weightLabel.setBounds(20, 100, 200, 20);
+
+            // Adds ui to the newWorkoutPanel
+            newWorkoutPanel.add(nameLabel);
+            newWorkoutPanel.add(dateLabel);
+            newWorkoutPanel.add(weightLabel);
+
+            newWorkoutPanel.setLocation(0, 300);
+            newWorkoutPanel.setLayout(null);
+
+            return newWorkoutPanel;
+
+        }
+
+        // MODIFIES: ft
+        // EFFECTS:  adds new workout to ft WorkoutList
+        public void tryAddWorkout(Workout newWorkout) {
+            try {
+                ft.addWorkout(newWorkout);
+            } catch (WorkoutNameAlreadyExistsException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+
+        // MODIFIES: this, ft
+        // EFFECTS: On button click creates new panel for users to enter workout information.
+        //          on create workout button click creates new workout based on user information and adds to ft
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            JPanel newWorkoutPanel = setUpCreateWorkoutFrame(new JPanel());
 
             // Creates text field for uses to input
             JTextField workoutName = new JTextField();
@@ -246,6 +274,12 @@ public class FitnessTrackerUI extends JFrame {
             JButton submitButton = new JButton("Create Workout");
             submitButton.setBounds(100, 130, 150, 25);
 
+            // Adds ui to the newWorkoutPanel
+            newWorkoutPanel.add(workoutName);
+            newWorkoutPanel.add(workoutDate);
+            newWorkoutPanel.add(workoutWeight);
+            newWorkoutPanel.add(submitButton);
+
             // Creates new method on button press
             submitButton.addActionListener(e -> {
                 String wkName = workoutName.getText();
@@ -255,25 +289,9 @@ public class FitnessTrackerUI extends JFrame {
                         + wkDate + " " + wkWeight);
                 newWorkoutPanel.setVisible(false);
                 Workout newWorkout = new Workout(wkName, wkDate, Double.parseDouble(wkWeight));
-                try {
-                    ft.addWorkout(newWorkout);
-                } catch (WorkoutNameAlreadyExistsException ex) {
-                    throw new RuntimeException(ex);
-                }
+                tryAddWorkout(newWorkout);
             });
 
-            // Adds ui to the newWorkoutPanel
-            newWorkoutPanel.add(nameLabel);
-            newWorkoutPanel.add(dateLabel);
-            newWorkoutPanel.add(weightLabel);
-            newWorkoutPanel.add(workoutName);
-            newWorkoutPanel.add(workoutDate);
-            newWorkoutPanel.add(workoutWeight);
-            newWorkoutPanel.add(workoutName);
-            newWorkoutPanel.add(submitButton);
-            newWorkoutPanel.setLocation(0, 300);
-
-            newWorkoutPanel.setLayout(null);
 
         }
     }
