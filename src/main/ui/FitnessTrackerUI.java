@@ -397,17 +397,10 @@ public class FitnessTrackerUI extends JFrame {
                 char indexChar = selectedItem.charAt(0);
                 int index = indexChar - '0';
                 Workout selectedWorkout = ft.getWorkoutList().get(index);
-//                openWorkoutMenu(selectedWorkout);
             }
         }
     }
 
-
-    // EFFECTS: Opens Workout menu for the selected workout, has buttons to add, edit, view, remove, and save exercises
-    //          to the workout, and to save workout to fitness tracker.
-//    public void openWorkoutMenu(Workout wk) {
-//
-//    }
 
 
     // Represents a button that will select workout from workout list and remove that selected workout
