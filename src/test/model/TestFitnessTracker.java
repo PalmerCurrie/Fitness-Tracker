@@ -61,8 +61,14 @@ public class TestFitnessTracker {
     }
 
     @Test
-    public void testRemoveExercise() {
+    public void testRemoveWorkoutByIndex() {
+        assertEquals(2, ft2.getListSize());
         ft2.removeWorkout(1);
+        assertEquals(workoutList1, ft2.getWorkoutList());
+    }
+    @Test
+    public void testRemoveWorkoutByWorkout() {
+        ft2.removeWorkout(wk2);
         assertEquals(workoutList1, ft2.getWorkoutList());
     }
 

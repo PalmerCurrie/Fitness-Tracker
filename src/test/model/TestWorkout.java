@@ -102,11 +102,13 @@ public class TestWorkout {
         assertEquals(exerciseList1, wk2.getExerciseList());
     }
 
+    
     @Test
     public void testAddExercise() {
         wk1.addExercise(ex2);
         assertEquals(exerciseList2, wk1.getExerciseList());
     }
+
 
     @Test
     void testToJson() {

@@ -32,18 +32,18 @@ public class FitnessTracker {
     // MODIFIES: this
     // EFFECTS:  removes specified workout from FitnessTracker workout list
     public void removeWorkout(int index) {
-        this.workoutList.remove(index);
         EventLog.getInstance().logEvent(new Event("Removed Workout: "
                 + this.workoutList.get(index).getName() + " - " + this.workoutList.get(index).getDate()));
+        this.workoutList.remove(index);
     }
 
     // REQUIRES: getListSize() > 0
     // MODIFIES: this
     // EFFECTS:  removes specified workout from FitnessTracker workout list
     public void removeWorkout(Workout workout) {
-        this.workoutList.remove(workout);
         EventLog.getInstance().logEvent(new Event("Removed Workout: "
                 + workout.getName() + " - " + workout.getDate()));
+        this.workoutList.remove(workout);
     }
 
     // REQUIRES: Workout name is not already in Workout List

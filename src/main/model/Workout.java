@@ -62,10 +62,10 @@ public class Workout {
     // MODIFIES: this
     // EFFECTS: removes exercise at index from exerciseList
     public void removeExercise(int index) {
-        this.exerciseList.remove(index);
-
         EventLog.getInstance().logEvent(new Event("Removed Exercise: "
                 + this.exerciseList.get(index).getName()));
+        this.exerciseList.remove(index);
+
 
     }
 
