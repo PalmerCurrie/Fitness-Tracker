@@ -25,28 +25,21 @@
         "weight": 200
     },
     {
-        "date": "Feb 22 2024",
-        "exerciseList": [
-            {
-                "reps": 8,
-                "sets": 4,
-                "name": "Lat Pull Down",
-                "weight": 14
-            },
-            {
-                "reps": 8,
-                "sets": 4,
-                "name": "Pull Ups",
-                "weight": 180
-            }
-        ],
-        "name": "Pull Day",
-        "weight": 179
-    },
-    {
         "date": "March 21 2024",
         "exerciseList": [],
         "name": "Leg Day",
         "weight": 185
+    },
+    {
+        "date": "April 13 2024",
+        "exerciseList": [],
+        "name": "Push Day",
+        "weight": 250
+    },
+    {
+        "date": "April 17 2024",
+        "exerciseList": [],
+        "name": "Pull Day",
+        "weight": 220
     }
 ]}
