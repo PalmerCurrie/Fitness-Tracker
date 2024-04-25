@@ -17,3 +17,6 @@ put into my personal fitness levels which is why I want to design this project.
 - Edit existing Workouts and Exercises
 - The option to save or not save changes made to my FitnessTracker
 - The option to load an existing data or to start a new FitnessTracker
+
+
+![Screenshot 2024-04-25 140440](https://github.com/PalmerCurrie/Fitness-Tracker/assets/129619038/c17fa222-cfc9-406c-886a-868b93a7c339)
