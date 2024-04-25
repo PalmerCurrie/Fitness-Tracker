@@ -8,39 +8,12 @@ tracking and reviewing my workouts. This will better allow me to view my progres
 put into my personal fitness levels which is why I want to design this project.
 
 
-## User Stories
+## Key Features
 
-- As a user, I want to be able to add or delete a Workout to my FitnessTracker
-- As a user, I want to be able to view a list of completed Workouts
-- As a user, I want to be able to add my weight to a Workout
-- As a user, I want to be able to add or delete an Exercise to my Workout
-- As a user, I want to be able to edit existing Workouts and Exercises
-- As a user, I want to be able to have the option to save or not save changes made to my FitnessTracker
-- As a user, I want to be able to have the option to load an existing data or to start a new FitnessTracker
-
-
-## Instructions for Grader
-
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the Create New Workout button in the Fitness Tracker Panel, this will open up a menu for the user to input the Workout's Name, Date, and Weight. Once user has inputed click Create Workout to add the X, Workout, to the Y,  Fitness Tracker.
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking the View Workouts button in the Fitness Tracker Panel, this will open up a Workout List menu which will display the Workouts in the Fitness Tracker. You can reorder the Workouts by clicking the Reorder in Descending Order button. Or you can remove a workout by selection, clicking on one of the workouts, and pressing the Remove Workout button.
-- You can locate my visual component by clicking the View Weight Progress button in the Fitness Tracker Panel. This will open up a graph of the user's latest 10 workouts displaying their weights in a line graph.
-- You can save the state of my application by clicking the Save Fitness Tracker button in the Fitness Tracker Panel, this will save the current Fitness Tracker to file.
-- You can reload the state of my application by clicking the Load Previous Fitness Tracker button in the Fitness Tracker Panel, this will load in the previously stored data.
-
-
-## Phase 4: Task 2:
-
-Sun Mar 31 12:26:55 PDT 2024 \
-Added Workout: Shoulder Day - March 31 2024  \
-Sun Mar 31 12:27:16 PDT 2024  \
-Added Workout: CHeSt Day  - Aprul 1 2024 \
-Sun Mar 31 12:27:20 PDT 2024 \
-Removed Workout: CHeSt Day  - Aprul 1 2024  \
-Sun Mar 31 12:27:31 PDT 2024 \
-Added Workout: Chest Day - April 1 2024
-
-## Phase 4: Task 3
-
-  I would implement a Writable interface that my Exercise, Workout, and FitnessTracker classes would implement. This would make it easier to implement my toJson methods in my classes which would convert the objects into Json format for saving.  
-  
-  The toJson method in my FitnessTracker, Workout, and Exercise all work in a very similar way and have a couple lines of duplicate code that could be abstracted out into a superclass to avoid duplication. For example, the only difference in the workoutListToJson method and the exerciseListToJson method is the for loop handling the different respected objects, and the eventLog string. I could create an interface or an abstract class that would be a super type to these allowing me to create a single method that would work on both of the types and removing the duplication.  
+- Add or delete a Workout to my FitnessTracker
+- View a list of completed Workouts
+- Add my weight to a Workout
+- Add or delete an Exercise to my Workout
+- Edit existing Workouts and Exercises
+- The option to save or not save changes made to my FitnessTracker
+- The option to load an existing data or to start a new FitnessTracker
